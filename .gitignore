@@ -1,0 +1,19 @@
+# Unreal
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/
+.vscode/
+*.sln
+*.code-workspace
+Build/*
+!Build/*.ico
+
+# Blender
+*.blend1
+*.blend2
+
+# Misc
+.DS_Store
+__pycache__/
