@@ -2,7 +2,7 @@
   "mcpServers": {
     "blender": {
       "type": "stdio",
-      "command": "/home/zach/.local/bin/uvx",
+      "command": "uvx",
       "args": [
         "blender-mcp"
       ],

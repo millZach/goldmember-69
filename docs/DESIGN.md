@@ -13,10 +13,10 @@
 |------|----------------|
 | Low-poly | Characters ~400–600 tris, props ~20–200 tris, faceted normals |
 | Low-res textures | 32×32 to 64×64, 16-color palettes, authored in Blender scripts |
-| Blurry texture filtering | Custom material function emulating 3-point bilinear filtering |
-| Vertex-colored lighting | Baked vertex color lighting, no dynamic shadows, no Lumen/Nanite |
+| Blurry texture filtering | `retro_common.gdshaderinc` emulates 3-point filtering (toggle: F2) |
+| Vertex-colored lighting | Level lighting baked into vertex colors in Blender; props/characters use per-vertex lighting; no shadows |
 | Distance fog | Short-range linear fog per level to hide the draw distance |
-| Low resolution output | Render at 320×240 (4:3) and upscale, with an optional "sharp" mode |
+| Low resolution output | Render at 320×240 (4:3), integer-scaled; 640×480 option (F1) |
 | Frame pacing | Optional 20–30 fps cap for authenticity |
 | Sprite effects | Muzzle flashes, explosions and bullet holes as billboards / decals |
 | HUD | Minimal: ammo counter bottom-right, health/armor arcs shown only on damage |
@@ -61,7 +61,7 @@ Original score written in a late-90s sequenced style (sample-based instruments, 
 
 ## Roadmap
 
-1. **Milestone 0 — Foundation:** engine install, Unreal MCP, UE5 project, retro render pipeline, Blender → UE import pipeline.
+1. **Milestone 0 — Foundation (done):** Godot project, retro render pipeline, Blender → Godot import pipeline, first-person controller, test room.
 2. **Milestone 1 — Vertical slice:** "Spillway" level, 3–4 weapons, guard AI with hit reactions, objectives, pause-menu gadget, HUD, one music track.
 3. **Milestone 2 — Split-screen:** 2–4 player local deathmatch in 2 arenas.
 4. **Milestone 3+:** additional missions, remaining weapons, difficulty modes, cheats.

@@ -1,0 +1,50 @@
+; Engine configuration file.
+
+config_version=5
+
+[application]
+
+config/name="Goldmember 69"
+config/description="An original late-90s console-style spy FPS."
+run/main_scene="res://levels/test_room/test_room.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[autoload]
+
+Game="*res://autoload/game.gd"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=240
+window/size/window_width_override=1280
+window/size/window_height_override=960
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/retro_pipeline/plugin.cfg")
+
+[gui]
+
+theme/default_font_antialiasing=0
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_3d=0
+textures/canvas_textures/default_texture_filter=0
+
+[shader_globals]
+
+retro_three_point={
+"type": "bool",
+"value": true
+}

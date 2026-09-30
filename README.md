@@ -1,26 +1,60 @@
 # Goldmember 69
 
-An original late-90s console-style spy FPS built in Unreal Engine 5, with assets modeled in Blender through MCP.
+An original late-90s console-style spy FPS built in Godot 4, with assets generated in Blender.
 
-This is a love letter to the 64-bit era of shooters — low-poly models, blurry low-res textures, heavy distance fog, auto-aim, location-based hit reactions, objective-driven missions and split-screen deathmatch. All characters, levels, weapons, art and music are original to this project; it contains no assets, names or audio from any commercial game or film franchise.
+This is a love letter to the 64-bit era of shooters: low-poly models, blurry low-res textures, heavy distance fog, auto-aim, location-based hit reactions, objective-driven missions and split-screen deathmatch. All characters, levels, weapons, art and music are original to this project; it contains no assets, names or audio from any commercial game or film franchise.
+
+![Milestone 0 test room](docs/screenshots/m0_test_room.png)
 
 ## Status
 
-Pre-production. See [docs/DESIGN.md](docs/DESIGN.md) for the design and roadmap.
+Milestone 0 (foundation) is done: retro render pipeline, Blender → Godot asset pipeline, and a first-person controller in a test room. See [docs/DESIGN.md](docs/DESIGN.md) for the design and roadmap.
+
+## Running
+
+```sh
+godot --path Game            # play
+godot -e --path Game         # open the editor
+./Tools/build_assets.sh      # regenerate Blender assets and reimport
+```
+
+## Controls
+
+| Action | Keyboard / mouse | Controller |
+|--------|------------------|------------|
+| Move | WASD | Left stick |
+| Look | Mouse / arrow keys | Right stick |
+| Fire | Left click | Right trigger |
+| Aim (zoom) | Right click | Left trigger |
+| Interact | E / Space | A |
+| Crouch | C / Ctrl | B |
+| Reload | R | X |
+| Next / previous weapon | Q, mouse wheel | Y / LB |
+| Pause | Esc | Start |
+
+Debug keys: **F1** internal resolution, **F2** 3-point texture filtering, **F3** frame cap, **F4** debug overlay, **F11** fullscreen.
 
 ## Layout
 
 | Path | Contents |
 |------|----------|
-| `Unreal/` | UE5 project (created once the engine is installed) |
-| `Blender/Source/` | `.blend` source files |
-| `Blender/Scripts/` | Python generators for props, characters, texture palettes |
-| `Audio/Source/` | Original music and SFX sources |
-| `Tools/` | Pipeline scripts (export, import, build) |
-| `docs/` | Design docs |
+| `Game/` | Godot 4 project |
+| `Game/shaders/` | Retro shaders (3-point filtering, prelit and vertex-lit variants) |
+| `Game/addons/retro_pipeline/` | Import plugin that converts glTF materials to the retro shaders |
+| `Blender/Scripts/` | Python generators for textures, levels and props |
+| `Blender/Source/` | Generated `.blend` sources |
+| `Blender/Textures/` | Generated texture PNGs |
+| `Tools/` | Pipeline scripts |
+| `docs/` | Design docs and screenshots |
+
+## Asset pipeline
+
+1. A script in `Blender/Scripts/` builds geometry and 32–64 px palette textures, then bakes lighting into vertex colors.
+2. It exports a `.glb` into `Game/assets/`. Object name suffixes such as `-col` and `-convcol` make Godot generate collision.
+3. On import, `retro_pipeline` swaps every material for a retro shader. Surfaces with vertex colors get the unshaded prelit shader; others get per-vertex lighting.
 
 ## Toolchain
 
-- Unreal Engine 5.x (C++ core systems, Blueprints for content)
-- Blender 4.5 LTS + [blender-mcp](https://github.com/ahujasid/blender-mcp)
+- Godot 4.7 (Compatibility renderer)
+- Blender 5.2 + [blender-mcp](https://github.com/ahujasid/blender-mcp)
 - Git LFS for binary assets
