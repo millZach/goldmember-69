@@ -19,14 +19,14 @@
 | Low resolution output | Render at 320×240 (4:3), integer-scaled; 640×480 option (F1) |
 | Frame pacing | Optional 20–30 fps cap for authenticity |
 | Sprite effects | Muzzle flashes, explosions and bullet holes as billboards / decals |
-| HUD | Minimal: ammo counter bottom-right, health/armor arcs shown only on damage |
+| HUD | Minimal: ammo counter bottom-right, health/armor bars bottom-left shown only on change |
 
 ## Core gameplay
 
 - **Aiming:** auto-aim with a small cone while moving; hold aim to enter a manual aim mode with a movable crosshair and zoom.
 - **Hit zones:** head / torso / arms / legs / groin, each with damage multipliers and unique reaction animations.
 - **Health and armor:** separate bars, no regeneration, armor pickups.
-- **Pause menu:** diegetic in-universe gadget (a wrist device) with mission objectives, inventory and options.
+- **Pause menu:** a rugged field PDA with a green LCD that slides up: mission objectives, gear, options.
 - **Difficulty tiers:** Agent / Special Agent / Elite Agent, plus an unlockable custom mode with sliders for enemy health, accuracy and reaction time.
 - **Mission rating:** completion time and accuracy, with unlockable cheats for beating target times.
 
@@ -54,6 +54,14 @@ A hydroelectric dam at night in fictional mountainous country Valdoria. The play
 - **Objectives (Agent):** disable the alarm grid, reach the dam crest, destroy the relay uplink.
 - **Special Agent adds:** plant a data tap in the control room.
 - **Elite Agent adds:** no guard may raise the alarm.
+- **Exit:** the service gate beyond the relay compound, once all objectives are complete.
+
+## Guards
+
+- Segmented rigid-part models animated procedurally (walk, aim, flinch, three death falls).
+- Notice the player by sight (cone + line of sight, faster when close) and by gunfire; alert nearby guards.
+- The first guard to spot you may run for the nearest alarm panel. Shoot the panel, kill the runner, or disable the alarm grid to stop it.
+- Hit zones: head ×4, torso ×1, arms ×0.6, legs ×0.7, each with its own flinch; dead guards drop their weapon.
 
 ## Audio
 
@@ -62,6 +70,6 @@ Original score written in a late-90s sequenced style (sample-based instruments, 
 ## Roadmap
 
 1. **Milestone 0 — Foundation (done):** Godot project, retro render pipeline, Blender → Godot import pipeline, first-person controller, test room.
-2. **Milestone 1 — Vertical slice:** "Spillway" level, 3–4 weapons, guard AI with hit reactions, objectives, pause-menu gadget, HUD, one music track.
+2. **Milestone 1 — Vertical slice (done):** "Spillway" level, 3 weapons, guard AI with hit reactions and alarms, objectives by difficulty, field-PDA pause menu, HUD, main menu, debrief, original score and SFX.
 3. **Milestone 2 — Split-screen:** 2–4 player local deathmatch in 2 arenas.
 4. **Milestone 3+:** additional missions, remaining weapons, difficulty modes, cheats.

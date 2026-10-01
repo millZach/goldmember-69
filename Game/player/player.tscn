@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://player/weapon_manager.gd" id="2_weapons"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
 radius = 0.35
@@ -20,4 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 current = true
 fov = 60.0
 near = 0.05
-far = 40.0
+far = 60.0
+
+[node name="Weapons" type="Node" parent="."]
+script = ExtResource("2_weapons")

@@ -4,18 +4,23 @@ An original late-90s console-style spy FPS built in Godot 4, with assets generat
 
 This is a love letter to the 64-bit era of shooters: low-poly models, blurry low-res textures, heavy distance fog, auto-aim, location-based hit reactions, objective-driven missions and split-screen deathmatch. All characters, levels, weapons, art and music are original to this project; it contains no assets, names or audio from any commercial game or film franchise.
 
-![Milestone 0 test room](docs/screenshots/m0_test_room.png)
+| | |
+|---|---|
+| ![Checkpoint](docs/screenshots/m1_checkpoint.png) | ![Dam crest](docs/screenshots/m1_crest.png) |
+| ![Control room](docs/screenshots/m1_control_room.png) | ![Test room](docs/screenshots/m1_test_room_guard.png) |
 
 ## Status
 
-Milestone 0 (foundation) is done: retro render pipeline, Blender → Godot asset pipeline, and a first-person controller in a test room. See [docs/DESIGN.md](docs/DESIGN.md) for the design and roadmap.
+Milestone 1 (vertical slice) is done: the "Spillway" mission with 15 guards, three weapons, alarms, difficulty-based objectives, a field-PDA pause menu, main menu, debrief and an original score. See [docs/DESIGN.md](docs/DESIGN.md) for the design and roadmap.
 
 ## Running
 
 ```sh
 godot --path Game            # play
 godot -e --path Game         # open the editor
-./Tools/build_assets.sh      # regenerate Blender assets and reimport
+./Tools/build_assets.sh      # regenerate Blender assets + audio and reimport
+./Tools/smoke_test.sh        # headless gameplay tests (combat, objectives, exit)
+./Tools/export_web.sh        # web build into Build/web
 ```
 
 ## Controls
@@ -25,7 +30,7 @@ godot -e --path Game         # open the editor
 | Move | WASD | Left stick |
 | Look | Mouse / arrow keys | Right stick |
 | Fire | Left click | Right trigger |
-| Aim (zoom) | Right click | Left trigger |
+| Aim mode (zoom + movable crosshair) | Right click | Left trigger |
 | Interact | E / Space | A |
 | Crouch | C / Ctrl | B |
 | Reload | R | X |
@@ -41,7 +46,10 @@ Debug keys: **F1** internal resolution, **F2** 3-point texture filtering, **F3**
 | `Game/` | Godot 4 project |
 | `Game/shaders/` | Retro shaders (3-point filtering, prelit and vertex-lit variants) |
 | `Game/addons/retro_pipeline/` | Import plugin that converts glTF materials to the retro shaders |
-| `Blender/Scripts/` | Python generators for textures, levels and props |
+| `Game/missions/`, `Game/guards/`, `Game/player/`, `Game/ui/` | Gameplay code |
+| `Game/tests/` | Headless smoke test |
+| `Blender/Scripts/` | Python generators for levels, characters, weapons, props, sprites |
+| `Audio/Scripts/` | Synthesizer and compositions for the original score and SFX |
 | `Blender/Source/` | Generated `.blend` sources |
 | `Blender/Textures/` | Generated texture PNGs |
 | `Tools/` | Pipeline scripts |

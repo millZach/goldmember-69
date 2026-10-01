@@ -6,11 +6,13 @@ config_version=5
 
 config/name="Goldmember 69"
 config/description="An original late-90s console-style spy FPS."
-run/main_scene="res://levels/test_room/test_room.tscn"
+run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
+Sound="*res://autoload/sound.gd"
+Effects="*res://autoload/effects.gd"
 Game="*res://autoload/game.gd"
 
 [display]
@@ -30,6 +32,14 @@ enabled=PackedStringArray("res://addons/retro_pipeline/plugin.cfg")
 [gui]
 
 theme/default_font_antialiasing=0
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"
+3d_physics/layer_3="guards"
+3d_physics/layer_4="interact"
+3d_physics/layer_5="pickups"
 
 [physics]
 

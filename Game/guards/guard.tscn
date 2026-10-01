@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://guards/guard.gd" id="1_guard"]
+[ext_resource type="Script" path="res://guards/guard_animator.gd" id="2_animator"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.35
+height = 1.8
+
+[node name="Guard" type="CharacterBody3D"]
+script = ExtResource("1_guard")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Animator" type="Node" parent="."]
+script = ExtResource("2_animator")
+
+[node name="Nav" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+height = 1.8
+radius = 0.4
